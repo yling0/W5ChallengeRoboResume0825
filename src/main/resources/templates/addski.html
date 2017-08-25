@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Skills</title>
+</head>
+<body>
+
+<h2 th:text="${addskimessage}">This should not display</h2>
+<br/>
+<form action="#" th:action="@{/addski}" th:object="${newSki}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <span th:if="${#fields.hasErrors('skill')}" th:error="*{skill}">Degree Error</span>
+    <p>Enter your skills: <input type="text" th:field="*{skill}"/></p>
+    <span th:if="${#fields.hasErrors('level')}" th:error="*{level}">Degree Error</span>
+    <p>Enter your skills' level: <input type="text" th:field="*{level}"/></p>
+    <button type="submit" class="btn btn-dark" value="Add Skills">Add Skills</button>
+    <button type="reset" class="btn btn-dark" value="Reset">Reset</button>
+</form>
+
+</body>
+</html>

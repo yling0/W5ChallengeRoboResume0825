@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Experience</title>
+</head>
+<body>
+
+<h2>Your working experience added successfully</h2>
+<br/>
+<h4><p th:text="${newExp.title}"/></h4>
+<h4><p th:text="${newExp.company} +', '+${newExp.startdate}+' - '+${newExp.enddate}"/></h4>
+<h4><p th:text="'Duty1: ' + ${newExp.duty1}"/></h4>
+<h4><p th:text="'Duty2: ' + ${newExp.duty2}"/></h4>
+<a href="/addexp"><button class="btn btn-dark">Add another</button></a>
+<a href="/index"><button class="btn btn-dark">Back Home</button></a>
+
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Skills</title>
+</head>
+<body>
+
+<h2>Your skills added successfully</h2>
+<br/>
+<h4><p th:text="${newSki.skill} + ', ' + ${newSki.level}"/></h4>
+<a href="/addski"><button class="btn btn-dark">Add another</button></a>
+<a href="/index"><button class="btn btn-dark">Back Home</button></a>
+
+
+
+</body>
+</html>

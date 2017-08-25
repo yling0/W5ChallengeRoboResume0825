@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Education</title>
+</head>
+<body>
+    <h2 th:text="${addedumessage}">This should not display</h2>
+
+    <form action="#" th:action="@{/addedu}" th:object="${newEdu}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <span th:if="${#fields.hasErrors('degree')}" th:error="*{degree}">Degree Error</span>
+        <p>Enter your degree: <input type="text" th:field="*{degree}"/></p>
+        <span th:if="${#fields.hasErrors('major')}" th:error="*{major}">Major Error</span>
+        <p>Enter your major: <input type="text" th:field="*{major}"/></p>
+        <span th:if="${#fields.hasErrors('uni')}" th:error="*{uni}">University Error</span>
+        <p>Enter your university: <input type="text" th:field="*{uni}"/></p>
+        <span th:if="${#fields.hasErrors('graduatedate')}" th:error="*{graduatedate}">Graduate Date Error</span>
+        <p>Enter your graduate date: <input type="text" th:field="*{graduatedate}"/></p>
+        <button type="submit" class="btn btn-dark" value="Add Education">Add Education</button>
+        <button type="reset" class="btn btn-dark" value="Reset">Reset</button>
+    </form>
+
+
+</body>
+</html>

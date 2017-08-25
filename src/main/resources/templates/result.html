@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div class="text-vertical-center">
+    <h1>Create your resume</h1>
+    <br/>
+    <h4><p th:text="'Name: ' + ${newPerson.name}"/></h4>
+    <h4><p th:text="'Email: ' + ${newPerson.email}"/></h4>
+    <a href="/index"><button class="btn btn-dark">Continue</button></a>
+</div>
+
+</body>
+</html>

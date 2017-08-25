@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome</title>
+</head>
+<body>
+<h1 th:text="${addpersonmessage}">This should not display</h1>
+
+<form action="#" th:action="@{/addperson}" th:object="${newPerson}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <span th:if="${#fields.hasErrors('name')}" th:error="*{name}">Name Error</span>
+    <h4><p>Name: <input type="text" th:field="*{name}"/></p></h4>
+    <span th:if="${#fields.hasErrors('email')}" th:error="*{email}">Email Error</span>
+    <h4><p>Email: <input type="text" th:field="*{email}"/></p></h4>
+    <button type="submit" class="btn btn-dark" value="Submit">Enter</button>
+</form>
+
+
+</body>
+</html>

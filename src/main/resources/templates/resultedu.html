@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Education</title>
+</head>
+<body>
+
+<h2>Your education added successfully</h2>
+<br/>
+<h4><p th:text="'Education: ' + ${newEdu.degree} + ' in ' + ${newEdu.major}"/></h4>
+<h4><p th:text="${newEdu.uni}"/></h4>
+<h4><p th:text="${newEdu.graduatedate}"/></h4>
+
+<a href="/addedu"><button class="btn btn-dark">Add another</button></a>
+<a href="/index"><button class="btn btn-dark">Back Home</button></a>
+
+</body>
+</html>

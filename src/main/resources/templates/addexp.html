@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Experience</title>
+</head>
+<body>
+<h2 th:text="${addexpmessage}">This should not display</h2>
+<br/>
+<form action="#" th:action="@{/addexp}" th:object="${newExp}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <span th:if="${#fields.hasErrors('title')}" th:error="*{title}">Degree Error</span>
+    <p>Enter your title: <input type="text" th:field="*{title}"/></p>
+    <span th:if="${#fields.hasErrors('company')}" th:error="*{company}">Degree Error</span>
+    <p>Enter your company: <input type="text" th:field="*{company}"/></p>
+    <span th:if="${#fields.hasErrors('startdate')}" th:error="*{startdate}">Degree Error</span>
+    <p>Enter your start date: <input type="text" th:field="*{startdate}"/></p>
+    <span th:if="${#fields.hasErrors('enddate')}" th:error="*{enddate}">Degree Error</span>
+    <p>Enter your end date: <input type="text" th:field="*{enddate}"/></p>
+    <span th:if="${#fields.hasErrors('duty1')}" th:error="*{duty1}">Degree Error</span>
+    <p>Enter your duties: <input type="text" th:field="*{duty1}"/></p>
+    <span th:if="${#fields.hasErrors('duty2')}" th:error="*{duty2}">Degree Error</span>
+    <p>Enter your duties: <input type="text" th:field="*{duty2}"/></p>
+    <button type="submit" class="btn btn-dark" value="Add Experience">Add Experience</button>
+    <button type="reset" class="btn btn-dark" value="Reset">Reset</button>
+</form>
+</body>
+</html>
