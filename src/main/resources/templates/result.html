@@ -7,9 +7,9 @@
 <body>
 
 <div class="text-vertical-center">
-    <h1>Create your resume</h1>
+    <h1><p th:text="'Hello '+${newPerson.fname}"></p></h1>
     <br/>
-    <h4><p th:text="'Name: ' + ${newPerson.name}"/></h4>
+    <h4><p th:text="${newPerson.fname} + ' ' + ${newPerson.lname}"/></h4>
     <h4><p th:text="'Email: ' + ${newPerson.email}"/></h4>
     <a href="/index"><button class="btn btn-dark">Continue</button></a>
 </div>

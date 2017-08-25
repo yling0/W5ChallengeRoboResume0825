@@ -11,7 +11,7 @@
 <th:block th:each="singleperson:${persons}">
     <tr>
         <p></p>
-        <p th:text="${singleperson.name}"/>
+        <p th:text="${singleperson.fname} +' '+ ${singleperson.lname}"/>
         <p th:text="${singleperson.email}"/>
         <td><a th:href="@{/updateperson/{id}(id=${singleperson.id})}">Update</a></td>
     </tr>

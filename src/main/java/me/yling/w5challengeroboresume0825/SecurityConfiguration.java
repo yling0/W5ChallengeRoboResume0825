@@ -11,13 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure (HttpSecurity http) throws Exception
+    protected void configure(HttpSecurity http) throws Exception
     {
-        http
-                .authorizeRequests()
+        http    .authorizeRequests()
                 .antMatchers("/","/listresume").permitAll()
-                .antMatchers("/addedu","/addexp", "/addperson","/addski","/index","/result","/resultexp","/resultski")
-                .access("hasRole('ROLE_ADMIN')")
+//                .antMatchers("/addedu","/addexp", "/addperson","/addski","/index","/result","/resultedu","/resultexp","/resultski").access("hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()

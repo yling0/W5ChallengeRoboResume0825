@@ -19,7 +19,12 @@ public class Person
 
     @NotEmpty
     @Size(min = 2)
-    private String name;
+    private String fname;
+
+    @NotEmpty
+    @Size(min = 2)
+    private String lname;
+
     @Email
     private String email;
 
@@ -27,13 +32,20 @@ public class Person
     private ArrayList<Experience> experiences;
     private ArrayList<Skills> myskills;
 
-
-    public String getName() {
-        return name;
+    public String getFname() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
     }
 
     public String getEmail() {

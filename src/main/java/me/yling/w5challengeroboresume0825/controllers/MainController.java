@@ -30,12 +30,10 @@ public class MainController
     SkillsRepo skillsRepo;
 
     //for user to input personal information
-    @GetMapping("/")
-    public String addPerson(Model model)
+    @RequestMapping("/")
+    public String showWelcome()
     {
-        model.addAttribute("newPerson", new Person());
-        model.addAttribute("addpersonmessage", "Welcome to Robo Resume!");
-        return "addperson";
+        return "welcome";
     }
 
     @RequestMapping("/login")
@@ -43,6 +41,16 @@ public class MainController
     {
         return "login";
     }
+
+
+    @GetMapping("/addperson")
+    public String addPerson(Model model)
+    {
+        model.addAttribute("newPerson", new Person());
+        model.addAttribute("addpersonmessage", "Create your resume here");
+        return "addperson";
+    }
+
 
     //save inputted user info in database
     @PostMapping("/addperson")
