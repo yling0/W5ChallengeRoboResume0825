@@ -1,68 +1,172 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Resume</title>
+
+    <link type="text/css" rel="stylesheet" href="../../css/blue.css" />
+    <link type="text/css" rel="stylesheet" href="../../css/print.css" media="print"/>
+
+
 </head>
 <body>
+<!-- Begin Wrapper -->
+<div id="wrapper">
+    <div class="wrapper-top"></div>
+    <div class="wrapper-mid">
+        <!-- Begin Paper -->
+        <div id="paper">
+            <div class="paper-top"></div>
+            <div id="paper-mid">
+                <div class="entry">
+                    <!-- Begin Image -->
+                    <img class="portrait" src="images/image.jpg" alt="John Smith" />
+                    <!-- End Image -->
+                    <!-- Begin Personal Information -->
+                    <th:block th:each="singleperson:${persons}">
+                    <div class="self">
+                        <h1 class="name" th:text="${singleperson.fname} +' '+ ${singleperson.lname}"><br /></h1>
+                        <ul>
+                            <li class="mail" th:text="${singleperson.email}"></li>
+                        </ul>
+                        <td><a th:href="@{/updateperson/{id}(id=${singleperson.id})}">Update</a></td>
+                    </div>
+                    </th:block>
+                    <!-- End Personal Information -->
+                </div>
 
-<!--list persons-->
-<h1>Your Resume</h1>
-<th:block th:each="singleperson:${persons}">
-    <tr>
-        <p></p>
-        <p th:text="${singleperson.fname} +' '+ ${singleperson.lname}"/>
-        <p th:text="${singleperson.email}"/>
-        <td><a th:href="@{/updateperson/{id}(id=${singleperson.id})}">Update</a></td>
-    </tr>
-</th:block>
+                <!-- Begin 2nd Row -->
+                <div class="entry">
+                    <h2>EDUCATION</h2>
+                    <th:block th:each="singleedu:${educationList}">
+                    <div class="content">
+                        <h3 th:text="${singleedu.graduatedate}"></h3>
+                        <p th:text="${singleedu.uni}"><br />
+                            <em><p th:text="${singleedu.degree}+' in '+${singleedu.major}"/></em></p>
+                        <td>
+                            <a class="listlink" th:href="@{/updateedu/{id}(id=${singleedu.id})}">Update</a> -
+                            <a th:href="@{/deleteedu/{id}(id=${singleedu.id})}">Delete</a>
+                        </td>
+                    </div>
+                    </th:block>
+                </div>
+                <!-- End 2nd Row -->
+                <!-- Begin 3rd Row -->
+                <div class="entry">
+                    <h2>EXPERIENCE</h2>
+                    <th:block th:each="singleexp:${experienceList}">
+                    <div class="content">
+                        <h3 th:text="${singleexp.startdate}+' - '+${singleexp.enddate}"></h3>
+                        <p th:text="${singleexp.company}"><br />
+                            <em><p th:text="${singleexp.title}"/></em></p>
+                        <ul class="info">
+                            <li th:text="${singleexp.duty1}"></li>
+                            <li><p th:text="${singleexp.duty2}"></p></li>
+                        </ul>
+                        <td>
+                            <a class="listlink" th:href="@{/updateexp/{id}(id=${singleexp.id})}">Update</a> -
+                            <a th:href="@{/deleteexp/{id}(id=${singleexp.id})}">Delete</a>
+                        </td>
+                    </div>
+                    </th:block>
+                </div>
+                <!-- End 3rd Row -->
+                <!-- Begin 4th Row -->
+                <div class="entry">
+                    <h2>SKILLS</h2>
+                    <th:block th:each="singleski:${skillsList}">
+                    <div class="content">
+                        <h3>Software Knowledge</h3>
+                        <ul class="skills">
+                            <li th:text="${singleski.skill} + ', '+ ${singleski.level}"></li>
+                        </ul>
+                        <td>
+                            <a class="listlink" th:href="@{/updateski/{id}(id=${singleski.id})}">Update</a> -
+                            <a th:href="@{/deleteski/{id}(id=${singleski.id})}">Delete</a>
+                        </td>
+                    </div>
+                    </th:block>
+                </div>
+                <!-- End 4th Row -->
+            </div>
+            <div class="clear"></div>
+            <div class="paper-bottom"></div>
+        </div>
+        <!-- End Paper -->
+    </div>
+    <div class="wrapper-bottom"></div>
+</div>
+<div id="message"><a href="/index">Back Home</a></div>
+<!-- End Wrapper -->
 
-
-<!--list all educations-->
-<h3>Education</h3>
-<th:block th:each="singleedu:${educationList}">
-    <tr>
-        <p></p>
-        <p th:text="${singleedu.degree}+' in '+${singleedu.major}"/>
-        <p th:text="${singleedu.uni}+', '+${singleedu.graduatedate}"/>
-        <td>
-            <a th:href="@{/updateedu/{id}(id=${singleedu.id})}">Update</a> -
-            <a th:href="@{/deleteedu/{id}(id=${singleedu.id})}">Delete</a>
-        </td>
-        <br />
-    </tr>
-</th:block>
-
-
-<!--list all working experiences-->
-<h3>Experience</h3>
-<th:block th:each="singleexp:${experienceList}">
-    <tr>
-        <p></p>
-        <p th:text="${singleexp.title}"/>
-        <p th:text="${singleexp.company}+', '+${singleexp.startdate}+' - '+${singleexp.enddate}"/>
-        <p th:text="'-Duty1: ' + ${singleexp.duty1}"/>
-        <p th:text="'-Duty2: ' + ${singleexp.duty2}"></p>
-        <a th:href="@{/updateexp/{id}(id=${singleexp.id})}">Update</a> -
-        <a th:href="@{/deleteexp/{id}(id=${singleexp.id})}">Delete</a>
-    </tr>
-</th:block>
-
-
-<!--list all skills-->
-<h3>Skills</h3>
-<th:block th:each="singleski:${skillsList}">
-    <tr>
-        <p></p>
-        <p th:text="${singleski.skill} + ', '+ ${singleski.level}"/>
-        <a th:href="@{/updateski/{id}(id=${singleski.id})}">Update</a> -
-        <a th:href="@{/deleteski/{id}(id=${singleski.id})}">Delete</a>
-    </tr>
-</th:block>
-
-
-<!--initiates a GET back to /index-->
-<a href="/index"><button class="btn btn-dark">Back Home</button></a>
+<script type="text/javascript" src="../../js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.tipsy.js"></script>
+<script type="text/javascript" src="../../js/cufon.yui.js"></script>
+<script type="text/javascript" src="../../js/scrollTo.js"></script>
+<script type="text/javascript" src="../../js/myriad.js"></script>
+<script type="text/javascript" src="../../js/jquery.colorbox.js"></script>
+<script type="text/javascript" src="../../js/custom.js"></script>
+<script type="text/javascript">
+    Cufon.replace('h1,h2');
+</script>
 
 </body>
 </html>
+
+<!--&lt;!&ndash;list persons&ndash;&gt;-->
+<!--<h1>Your Resume</h1>-->
+<!--<th:block th:each="singleperson:${persons}">-->
+    <!--<tr>-->
+        <!--<p></p>-->
+        <!--<p th:text="${singleperson.fname} +' '+ ${singleperson.lname}"/>-->
+        <!--<p th:text="${singleperson.email}"/>-->
+        <!--<td><a th:href="@{/updateperson/{id}(id=${singleperson.id})}">Update</a></td>-->
+    <!--</tr>-->
+<!--</th:block>-->
+
+
+<!--&lt;!&ndash;list all educations&ndash;&gt;-->
+<!--<h3>Education</h3>-->
+<!--<th:block th:each="singleedu:${educationList}">-->
+    <!--<tr>-->
+        <!--<p></p>-->
+        <!--<p th:text="${singleedu.degree}+' in '+${singleedu.major}"/>-->
+        <!--<p th:text="${singleedu.uni}+', '+${singleedu.graduatedate}"/>-->
+        <!--<td>-->
+            <!--<a th:href="@{/updateedu/{id}(id=${singleedu.id})}">Update</a> - -->
+            <!--<a th:href="@{/deleteedu/{id}(id=${singleedu.id})}">Delete</a>-->
+        <!--</td>-->
+        <!--<br />-->
+    <!--</tr>-->
+<!--</th:block>-->
+
+
+<!--&lt;!&ndash;list all working experiences&ndash;&gt;-->
+<!--<h3>Experience</h3>-->
+<!--<th:block th:each="singleexp:${experienceList}">-->
+    <!--<tr>-->
+        <!--<p></p>-->
+        <!--<p th:text="${singleexp.title}"/>-->
+        <!--<p th:text="${singleexp.company}+', '+${singleexp.startdate}+' - '+${singleexp.enddate}"/>-->
+        <!--<p th:text="'-Duty1: ' + ${singleexp.duty1}"/>-->
+        <!--<p th:text="'-Duty2: ' + ${singleexp.duty2}"></p>-->
+        <!--<a th:href="@{/updateexp/{id}(id=${singleexp.id})}">Update</a> - -->
+        <!--<a th:href="@{/deleteexp/{id}(id=${singleexp.id})}">Delete</a>-->
+    <!--</tr>-->
+<!--</th:block>-->
+
+
+<!--&lt;!&ndash;list all skills&ndash;&gt;-->
+<!--<h3>Skills</h3>-->
+<!--<th:block th:each="singleski:${skillsList}">-->
+    <!--<tr>-->
+        <!--<p></p>-->
+        <!--<p th:text="${singleski.skill} + ', '+ ${singleski.level}"/>-->
+        <!--<a th:href="@{/updateski/{id}(id=${singleski.id})}">Update</a> - -->
+        <!--<a th:href="@{/deleteski/{id}(id=${singleski.id})}">Delete</a>-->
+    <!--</tr>-->
+<!--</th:block>-->
+
+
+<!--&lt;!&ndash;initiates a GET back to /index&ndash;&gt;-->
+<!--<a href="/index"><button class="btn btn-dark">Back Home</button></a>-->

@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Education</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/signin.css">
 </head>
 <body>
-    <h2 th:text="${addedumessage}">This should not display</h2>
-
+<h2 th:text="${addedumessage}" align="center">This should not display</h2>
+<br />
+<div align="center">
     <form action="#" th:action="@{/addedu}" th:object="${newEdu}" method="post">
         <input type="hidden" th:field="*{id}" />
 
@@ -21,7 +31,38 @@
         <button type="submit" class="btn btn-dark" value="Add Education">Add Education</button>
         <button type="reset" class="btn btn-dark" value="Reset">Reset</button>
     </form>
+</div>
 
+<!-- Bootstrap core JavaScript
+        ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--Bootstrape 4.0 core JavaScript-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<!--<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>-->
+<!--<script src="../../../../assets/js/vendor/popper.min.js"></script>-->
+<script src="../../js/bootstrap.js"></script>
+<!--&lt;!&ndash; Just to make our placeholder images work. Don't actually copy the next line! &ndash;&gt;-->
+<!--<script src="../../../../assets/js/vendor/holder.min.js"></script>-->
 
 </body>
 </html>
+
+<!--<h2 th:text="${addedumessage}">This should not display</h2>-->
+
+<!--<form action="#" th:action="@{/addedu}" th:object="${newEdu}" method="post">-->
+    <!--<input type="hidden" th:field="*{id}" />-->
+
+    <!--<span th:if="${#fields.hasErrors('degree')}" th:error="*{degree}">Degree Error</span>-->
+    <!--<p>Enter your degree: <input type="text" th:field="*{degree}"/></p>-->
+    <!--<span th:if="${#fields.hasErrors('major')}" th:error="*{major}">Major Error</span>-->
+    <!--<p>Enter your major: <input type="text" th:field="*{major}"/></p>-->
+    <!--<span th:if="${#fields.hasErrors('uni')}" th:error="*{uni}">University Error</span>-->
+    <!--<p>Enter your university: <input type="text" th:field="*{uni}"/></p>-->
+    <!--<span th:if="${#fields.hasErrors('graduatedate')}" th:error="*{graduatedate}">Graduate Date Error</span>-->
+    <!--<p>Enter your graduate date: <input type="text" th:field="*{graduatedate}"/></p>-->
+    <!--<button type="submit" class="btn btn-dark" value="Add Education">Add Education</button>-->
+    <!--<button type="reset" class="btn btn-dark" value="Reset">Reset</button>-->
+<!--</form>-->
